@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useReducer } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { SegmentedControl } from "@mantine/core";
 import Todo from "./Todo";
 
@@ -21,14 +21,14 @@ const TodoList = () => {
         "todos",
         JSON.stringify([
           ...todos,
-          { name: inputRef.current.value, isComplete: false },
+          { name: inputRef.current.value, isComplete: false, id: Date.now() },
         ])
       );
       setData([
         ...todos,
         {
           name: inputRef.current.value,
-          id: new Date().valueOf(),
+          id: Date.now(),
           isComplete: false,
         },
       ]);
@@ -58,7 +58,9 @@ const TodoList = () => {
         <h3>Insert your todo </h3>
         <h3>
           number of active todo:
-          {data.filter((item) => item.isComplete === false).length}
+          {data == null
+            ? 0
+            : data.filter((item) => item.isComplete === false).length}
         </h3>
         <input
           type="text"
@@ -87,7 +89,7 @@ const TodoList = () => {
         <button onClick={onClickHandler}>create your todo </button>
       </div>
       <Todo
-        todos={data}
+        todos={data ?? []}
         deleteTodo={deleteTodo}
         completeTodo={completeTodo}
         filter={value}

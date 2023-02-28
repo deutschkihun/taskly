@@ -1,8 +1,6 @@
 import React from "react";
 
 const Todo = ({ todos, deleteTodo, completeTodo, filter, search }) => {
-  console.log(filter);
-
   const filteredTodos = todos.filter((item) =>
     filter === "active"
       ? !item.isComplete
