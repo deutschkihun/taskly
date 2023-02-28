@@ -1,13 +1,19 @@
-import "./App.css";
 import TodoList from "./components/TodoList";
+import { MantineProvider } from "@mantine/core";
 
 function App() {
-  // https://www.youtube.com/watch?v=xAqCEBFGdYk
-
   return (
-    <div className="App">
-      <TodoList />
-    </div>
+    <MantineProvider
+      theme={{
+        fontFamily: "Verdana, sans-serif",
+        fontFamilyMonospace: "Monaco, Courier, monospace",
+        headings: { fontFamily: "Greycliff CF, sans-serif" },
+      }}
+    >
+      <div className="App">
+        <TodoList />
+      </div>
+    </MantineProvider>
   );
 }
 

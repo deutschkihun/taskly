@@ -1,5 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
-import { SegmentedControl } from "@mantine/core";
+import {
+  TextInput,
+  SegmentedControl,
+  Title,
+  Button,
+  Paper,
+  Text,
+} from "@mantine/core";
+import { IconFilePlus } from "@tabler/icons-react";
 import Todo from "./Todo";
 
 const TodoList = () => {
@@ -50,33 +58,49 @@ const TodoList = () => {
       return todo;
     });
     setData(updatedTodos);
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
   };
 
   return (
     <>
       <div>
-        <h3>Insert your todo </h3>
-        <h3>
-          number of active todo:
-          {data == null
-            ? 0
-            : data.filter((item) => item.isComplete === false).length}
-        </h3>
-        <input
-          type="text"
-          placeholder="search your todos"
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <Title order={3}>Taskly</Title>
+        <Paper
+          shadow="md"
+          p="lg"
+          radius="md"
+          withBorder
+          style={{ margin: "10px 0" }}
+        >
+          <Text>
+            number of active todo:
+            {data == null
+              ? 0
+              : data.filter((item) => item.isComplete === false).length}
+          </Text>
+        </Paper>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginBottom: "10px",
+          }}
+        >
+          <TextInput
+            type="text"
+            placeholder="search your todos"
+            onChange={(e) => setSearch(e.target.value)}
+            style={{ flex: 1, paddingRight: "10px" }}
+          />
 
-        <div>
           <SegmentedControl
             value={value}
             onChange={setValue}
             color="blue"
             transitionDuration={500}
             transitionTimingFunction="linear"
-            radius="lg"
-            size="lg"
+            radius="m"
+            size="m"
             data={[
               { label: "Active", value: "active" },
               { label: "Inactive", value: "inactive" },
@@ -84,10 +108,41 @@ const TodoList = () => {
             ]}
           />
         </div>
-
-        <input ref={inputRef} placeholder="insert keyword" />
-        <button onClick={onClickHandler}>create your todo </button>
       </div>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginBottom: "10px",
+        }}
+      >
+        <TextInput
+          ref={inputRef}
+          placeholder="insert new todo name"
+          type="text"
+          style={{ flex: 1, paddingRight: "10px" }}
+        />
+        <Button
+          leftIcon={<IconFilePlus size={18} />}
+          onClick={onClickHandler}
+          styles={(theme) => ({
+            root: {
+              height: 36,
+              "&:hover": {
+                backgroundColor: theme.fn.darken("#00acee", 0.05),
+              },
+            },
+
+            leftIcon: {
+              marginRight: 15,
+            },
+          })}
+        >
+          create new todo
+        </Button>
+      </div>
+
       <Todo
         todos={data ?? []}
         deleteTodo={deleteTodo}

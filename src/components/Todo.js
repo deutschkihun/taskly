@@ -1,4 +1,5 @@
 import React from "react";
+import { Card, Text, Badge, Group, Button, Checkbox } from "@mantine/core";
 
 const Todo = ({ todos, deleteTodo, completeTodo, filter, search }) => {
   const filteredTodos = todos.filter((item) =>
@@ -10,7 +11,14 @@ const Todo = ({ todos, deleteTodo, completeTodo, filter, search }) => {
   );
 
   return (
-    <div style={{ marginTop: "20px" }}>
+    <div
+      style={{
+        marginTop: "20px",
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: "10px ",
+      }}
+    >
       {filteredTodos
         .filter((item) => {
           return search.toLowerCase() === ""
@@ -18,23 +26,37 @@ const Todo = ({ todos, deleteTodo, completeTodo, filter, search }) => {
             : item.name.toLowerCase().includes(search);
         })
         .map((todo) => (
-          <div key={todo.id}>
-            <p
-              style={{
-                textDecoration: todo.isComplete ? "line-through" : "none",
-              }}
+          <Card shadow="sm" p="lg" radius="md" withBorder key={todo.id}>
+            <Group position="apart" mt="md" mb="xs">
+              <Text
+                weight={500}
+                style={{
+                  textDecoration: todo.isComplete ? "line-through" : "none",
+                }}
+              >
+                {todo.name}
+              </Text>
+              <Badge color={todo.isComplete ? "gray" : "blue"} variant="light">
+                {todo.isComplete ? "complete" : "in progress"}
+              </Badge>
+            </Group>
+            <Button
+              variant="light"
+              color="blue"
+              fullWidth
+              mt="md"
+              radius="md"
+              onClick={() => deleteTodo(todo.id)}
             >
-              {todo.name}
-            </p>
-            <input
-              type="checkbox"
+              delete
+            </Button>
+            <Checkbox
+              style={{ marginTop: "10px" }}
+              label="mark as complete"
               checked={todo.isComplete}
               onChange={() => completeTodo(todo.id)}
             />
-            <button type="text" onClick={() => deleteTodo(todo.id)}>
-              delete
-            </button>
-          </div>
+          </Card>
         ))}
     </div>
   );
