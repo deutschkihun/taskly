@@ -33,3 +33,9 @@ code {
   justifycontent: space-between;
   margin-bottom: 10px;
 }
+
+/* Todo counter */
+.todo-counter {
+  display: flex;
+  justifycontent: space-between;
+}
