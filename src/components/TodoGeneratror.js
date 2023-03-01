@@ -11,7 +11,7 @@ const TodoGeneratror = ({ todoList }) => {
   const onClickHandler = () => {
     const ref = opened ? modalInputRef : inputRef;
     if (ref.current.value === "" || !ref.current) {
-      alert("please insert todo title");
+      alert("please insert task");
     } else {
       localStorage.setItem(
         "todos",
@@ -35,7 +35,7 @@ const TodoGeneratror = ({ todoList }) => {
         <TextInput
           icon={<IconTextPlus size={16} />}
           ref={inputRef}
-          placeholder="Insert content"
+          placeholder="Insert task"
           type="text"
           mr={10}
           mb={10}
