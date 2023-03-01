@@ -27,19 +27,10 @@ const TodoGeneratror = ({ todoList }) => {
         ref={inputRef}
         placeholder="Insert new todo title"
         type="text"
-        style={{ flex: 1, paddingRight: "10px" }}
+        pr={10}
+        style={{ flex: 1 }}
       />
-      <Button
-        leftIcon={<IconFilePlus size={18} />}
-        onClick={onClickHandler}
-        styles={(theme) => ({
-          root: {
-            "&:hover": {
-              backgroundColor: theme.fn.darken("#00acee", 0.05),
-            },
-          },
-        })}
-      >
+      <Button leftIcon={<IconFilePlus size={18} />} onClick={onClickHandler}>
         create new todo
       </Button>
     </div>
