@@ -39,6 +39,7 @@ const TodoApp = () => {
         setFilter={setFilter}
         filter={filter}
         setSearch={setSearch}
+        search={search}
       />
       <TodoGeneratror todoList={todoList} />
       <TodoList

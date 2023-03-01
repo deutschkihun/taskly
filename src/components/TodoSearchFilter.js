@@ -10,7 +10,7 @@ import {
 import { IconSearch } from "@tabler/icons-react";
 import { IconDoorEnter } from "@tabler/icons-react";
 
-const TodoSearchFilter = ({ setSearch, filter, setFilter }) => {
+const TodoSearchFilter = ({ search, setSearch, filter, setFilter }) => {
   const [opened, setOpened] = useState(false);
 
   return (
@@ -20,6 +20,7 @@ const TodoSearchFilter = ({ setSearch, filter, setFilter }) => {
           placeholder="Search"
           icon={<IconSearch size={16} />}
           type="text"
+          value={search}
           onChange={(e) => setSearch(e.target.value)}
           style={{ flex: 1 }}
           mr={10}
@@ -32,6 +33,7 @@ const TodoSearchFilter = ({ setSearch, filter, setFilter }) => {
           transitionDuration={500}
           transitionTimingFunction="linear"
           radius="md"
+          fullWidth
           size="m"
           data={[
             { label: "Complete", value: "complete" },
@@ -50,6 +52,7 @@ const TodoSearchFilter = ({ setSearch, filter, setFilter }) => {
             placeholder="Search"
             icon={<IconSearch size={16} />}
             type="text"
+            value={search}
             onChange={(e) => setSearch(e.target.value)}
             style={{ flex: 1 }}
           />
