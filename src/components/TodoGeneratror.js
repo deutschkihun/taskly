@@ -19,6 +19,7 @@ const TodoGeneratror = ({ todoList }) => {
         ])
       );
       inputRef.current.value = "";
+      if (opened) setOpened(!setOpened);
     }
   };
 
