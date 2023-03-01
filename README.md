@@ -14,7 +14,7 @@ This application consists of 4 main components
 - javascript,html,css
 - react
 - @mantine/core (css library)
-- @tabler/icons-react (icno library)
+- @tabler/icons-react (icon library)
 
 
 [This application](https://todo-deutschkihun.vercel.app/) is hosted by vercel. 
