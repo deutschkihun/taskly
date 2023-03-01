@@ -12,35 +12,41 @@ import { IconDoorEnter } from "@tabler/icons-react";
 
 const TodoSearchFilter = ({ search, setSearch, filter, setFilter }) => {
   const [opened, setOpened] = useState(false);
+  const taskFilter = (
+    <SegmentedControl
+      value={filter}
+      onChange={setFilter}
+      color="blue"
+      transitionDuration={500}
+      transitionTimingFunction="linear"
+      radius="md"
+      fullWidth
+      size="m"
+      data={[
+        { label: "Complete", value: "complete" },
+        { label: "In progress", value: "in progress" },
+        { label: "All", value: "all" },
+      ]}
+    />
+  );
+
+  const searchInput = (
+    <TextInput
+      placeholder="Search"
+      icon={<IconSearch size={16} />}
+      type="text"
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      style={{ flex: 1 }}
+      mr={10}
+    />
+  );
 
   return (
     <>
       <div className="todo-search-filter">
-        <TextInput
-          placeholder="Search"
-          icon={<IconSearch size={16} />}
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          style={{ flex: 1 }}
-          mr={10}
-        />
-
-        <SegmentedControl
-          value={filter}
-          onChange={setFilter}
-          color="blue"
-          transitionDuration={500}
-          transitionTimingFunction="linear"
-          radius="md"
-          fullWidth
-          size="m"
-          data={[
-            { label: "Complete", value: "complete" },
-            { label: "In progress", value: "in progress" },
-            { label: "All", value: "all" },
-          ]}
-        />
+        {searchInput}
+        {taskFilter}
       </div>
       <div className="todo-search-filter-mobile">
         <Modal
@@ -48,31 +54,8 @@ const TodoSearchFilter = ({ search, setSearch, filter, setFilter }) => {
           onClose={() => setOpened(false)}
           title="Filter option"
         >
-          <TextInput
-            placeholder="Search"
-            icon={<IconSearch size={16} />}
-            type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            style={{ flex: 1 }}
-          />
-          <SegmentedControl
-            value={filter}
-            onChange={setFilter}
-            color="blue"
-            transitionDuration={500}
-            transitionTimingFunction="linear"
-            radius="md"
-            size="m"
-            data={[
-              { label: "Complete", value: "complete" },
-              { label: "In progress", value: "in progress" },
-              { label: "All", value: "all" },
-            ]}
-            style={{ flex: 1 }}
-            mt={10}
-            fullWidth
-          />
+          {searchInput}
+          <div style={{ marginTop: "10px" }}>{taskFilter}</div>
         </Modal>
         <Group position="center">
           <Button
