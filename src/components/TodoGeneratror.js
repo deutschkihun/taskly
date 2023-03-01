@@ -54,7 +54,7 @@ const TodoGeneratror = ({ todoList }) => {
           <TextInput
             icon={<IconTextPlus size={16} />}
             ref={modalInputRef}
-            placeholder="Insert content"
+            placeholder="Insert task"
             type="text"
             mb={10}
           />
