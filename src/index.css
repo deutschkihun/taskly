@@ -39,6 +39,7 @@ code {
   justifycontent: space-between;
 }
 
+/* mobile screen size */
 @media screen and (max-width: 500px) {
   .todo-search-filter {
     display: none;
@@ -47,8 +48,13 @@ code {
   .todo-generator {
     display: none;
   }
+
+  .todo-counter {
+    text-align: center;
+  }
 }
 
+/* table and web screen size */
 @media screen and (min-width: 501px) {
   .todo-search-filter-mobile {
     display: none;

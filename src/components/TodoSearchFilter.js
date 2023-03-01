@@ -74,7 +74,6 @@ const TodoSearchFilter = ({ search, setSearch, filter, setFilter }) => {
             fullWidth
           />
         </Modal>
-
         <Group position="center">
           <Button
             onClick={() => setOpened(true)}
