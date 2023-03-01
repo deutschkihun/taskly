@@ -7,19 +7,25 @@ import { IconWindmill } from "@tabler/icons-react";
 const TodoGeneratror = ({ todoList }) => {
   const [opened, setOpened] = useState(false);
   const inputRef = useRef();
+  const modalInputRef = useRef();
   const onClickHandler = () => {
-    if (inputRef.current.value === "" || !inputRef.current) {
+    const ref = opened ? modalInputRef : inputRef;
+    if (ref.current.value === "" || !ref.current) {
       alert("please insert todo title");
     } else {
       localStorage.setItem(
         "todos",
         JSON.stringify([
           ...todoList,
-          { name: inputRef.current.value, isComplete: false, id: Date.now() },
+          {
+            name: ref.current.value,
+            isComplete: false,
+            id: Date.now(),
+          },
         ])
       );
-      inputRef.current.value = "";
-      if (opened) setOpened(!setOpened);
+      ref.current.value = "";
+      if (opened) setOpened(!opened);
     }
   };
 
@@ -36,21 +42,20 @@ const TodoGeneratror = ({ todoList }) => {
           style={{ flex: 1 }}
         />
         <Button leftIcon={<IconFilePlus size={18} />} onClick={onClickHandler}>
-          Create new todo
+          Create new task
         </Button>
       </div>
       <div className="todo-generator-mobile">
         <Modal
           opened={opened}
           onClose={() => setOpened(false)}
-          title="Create new todo"
+          title="Create new task"
         >
           <TextInput
             icon={<IconTextPlus size={16} />}
-            ref={inputRef}
+            ref={modalInputRef}
             placeholder="Insert content"
             type="text"
-            fullWidth
             mb={10}
           />
           <Button
@@ -69,7 +74,7 @@ const TodoGeneratror = ({ todoList }) => {
             fullWidth
             leftIcon={<IconWindmill size={16} />}
           >
-            Create todo
+            Create new task
           </Button>
         </Group>
       </div>
