@@ -1,24 +1,16 @@
 import React from "react";
 import { Card, Text, Badge, Group, Button, Checkbox } from "@mantine/core";
-
 const Todo = ({ todos, deleteTodo, completeTodo, filter, search }) => {
   const filteredTodos = todos.filter((item) =>
-    filter === "active"
+    filter === "in progress"
       ? !item.isComplete
-      : filter === "inactive"
+      : filter === "complete"
       ? item.isComplete
       : item
   );
 
   return (
-    <div
-      style={{
-        marginTop: "20px",
-        display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
-        gap: "10px ",
-      }}
-    >
+    <div className="todo">
       {filteredTodos
         .filter((item) => {
           return search.toLowerCase() === ""
@@ -26,12 +18,20 @@ const Todo = ({ todos, deleteTodo, completeTodo, filter, search }) => {
             : item.name.toLowerCase().includes(search);
         })
         .map((todo) => (
-          <Card shadow="sm" p="lg" radius="md" withBorder key={todo.id}>
+          <Card
+            shadow="sm"
+            p="lg"
+            radius="md"
+            withBorder
+            key={todo.id}
+            style={{ opacity: todo.isComplete ? 0.5 : 1 }}
+          >
             <Group position="apart" mt="md" mb="xs">
               <Text
                 weight={500}
                 style={{
                   textDecoration: todo.isComplete ? "line-through" : "none",
+                  lineBreak: "anywhere",
                 }}
               >
                 {todo.name}
@@ -41,17 +41,17 @@ const Todo = ({ todos, deleteTodo, completeTodo, filter, search }) => {
               </Badge>
             </Group>
             <Button
+              onClick={() => deleteTodo(todo.id)}
               variant="light"
               color="blue"
               fullWidth
               mt="md"
               radius="md"
-              onClick={() => deleteTodo(todo.id)}
             >
               delete
             </Button>
             <Checkbox
-              style={{ marginTop: "10px" }}
+              mt={10}
               label="mark as complete"
               checked={todo.isComplete}
               onChange={() => completeTodo(todo.id)}

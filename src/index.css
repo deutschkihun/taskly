@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+  margin: 10% 10%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -12,7 +12,24 @@ code {
     monospace;
 }
 
-.App {
-  text-align: center;
-  margin: 0 10%;
+/* Todo  */
+.todo {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* Todo generator */
+.todo-generator {
+  display: flex;
+  justifycontent: space-between;
+  margin-bottom: 10px;
+}
+
+/* Todo serach filter */
+.todo-search-filter {
+  display: flex;
+  justifycontent: space-between;
+  margin-bottom: 10px;
 }
