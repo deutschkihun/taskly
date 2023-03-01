@@ -11,7 +11,8 @@ const TodoSearchFilter = ({ setSearch, filter, setFilter }) => {
         type="text"
         onChange={(e) => setSearch(e.target.value)}
         style={{ flex: 1 }}
-        pr={10}
+        mr={10}
+        mb={10}
       />
 
       <SegmentedControl

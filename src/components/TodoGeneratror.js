@@ -27,7 +27,8 @@ const TodoGeneratror = ({ todoList }) => {
         ref={inputRef}
         placeholder="Insert new todo title"
         type="text"
-        pr={10}
+        mr={10}
+        mb={10}
         style={{ flex: 1 }}
       />
       <Button leftIcon={<IconFilePlus size={18} />} onClick={onClickHandler}>

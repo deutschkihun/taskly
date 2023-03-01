@@ -16,7 +16,7 @@ code {
 .todo {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(300px, auto));
   gap: 10px;
 }
 
@@ -24,18 +24,22 @@ code {
 .todo-generator {
   display: flex;
   justifycontent: space-between;
-  margin-bottom: 10px;
 }
 
 /* Todo serach filter */
 .todo-search-filter {
   display: flex;
   justifycontent: space-between;
-  margin-bottom: 10px;
 }
 
 /* Todo counter */
 .todo-counter {
   display: flex;
   justifycontent: space-between;
+}
+
+@media screen and (max-width: 300px) {
+  .todo {
+    grid-template-columns: repeat(auto-fill, minmax(auto, 250px));
+  }
 }
