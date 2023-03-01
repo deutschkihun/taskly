@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { TextInput, Button } from "@mantine/core";
 import { IconFilePlus } from "@tabler/icons-react";
+import { IconTextPlus } from "@tabler/icons-react";
 
 const TodoGeneratror = ({ todoList }) => {
   const inputRef = useRef();
@@ -22,8 +23,9 @@ const TodoGeneratror = ({ todoList }) => {
   return (
     <div className="todo-generator">
       <TextInput
+        icon={<IconTextPlus size={16} />}
         ref={inputRef}
-        placeholder="insert new todo name"
+        placeholder="Insert new todo title"
         type="text"
         style={{ flex: 1, paddingRight: "10px" }}
       />

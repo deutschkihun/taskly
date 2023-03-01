@@ -1,15 +1,17 @@
 import React from "react";
 import { TextInput, SegmentedControl } from "@mantine/core";
+import { IconSearch } from "@tabler/icons-react";
+
 const TodoSearchFilter = ({ setSearch, filter, setFilter }) => {
   return (
     <div className="todo-search-filter">
       <TextInput
-        className="abc"
+        placeholder="Search"
+        icon={<IconSearch size={16} />}
         type="text"
-        placeholder="search your todos"
         onChange={(e) => setSearch(e.target.value)}
-        pr={10}
         style={{ flex: 1 }}
+        pr={10}
       />
 
       <SegmentedControl
