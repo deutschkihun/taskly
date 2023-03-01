@@ -31,7 +31,7 @@ const TodoApp = () => {
 
   return (
     <>
-      <Title order={3} size="h1" align="center" mb={20}>
+      <Title order={1} align="center" mb={20}>
         Taskly
       </Title>
       <TodoCounter todoList={todoList} />

@@ -48,10 +48,6 @@ code {
   .todo-generator {
     display: none;
   }
-
-  .todo-counter {
-    text-align: center;
-  }
 }
 
 /* table and web screen size */

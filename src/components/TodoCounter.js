@@ -1,5 +1,5 @@
 import React from "react";
-import { Paper, Text } from "@mantine/core";
+import { Paper, Title } from "@mantine/core";
 
 const TodoCounter = ({ todoList }) => {
   return (
@@ -13,7 +13,9 @@ const TodoCounter = ({ todoList }) => {
         mr={10}
         style={{ flex: 10 }}
       >
-        <Text>active tasks</Text>
+        <Title align="center" order={3}>
+          active tasks
+        </Title>
       </Paper>
       <Paper
         shadow="md"
@@ -24,9 +26,9 @@ const TodoCounter = ({ todoList }) => {
         mb={20}
         style={{ flex: 1 }}
       >
-        <Text>
+        <Title align="center" order={3}>
           {todoList.filter((item) => item.isComplete === false).length}
-        </Text>
+        </Title>
       </Paper>
     </div>
   );
