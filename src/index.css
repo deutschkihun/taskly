@@ -16,7 +16,7 @@ code {
 .todo {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+  grid-template-columns: repeat(auto-fill, minmax(250px, auto));
   gap: 10px;
 }
 
@@ -30,12 +30,33 @@ code {
 .todo-search-filter {
   display: flex;
   justifycontent: space-between;
+  margin-bottom: 10px;
 }
 
 /* Todo counter */
 .todo-counter {
   display: flex;
   justifycontent: space-between;
+}
+
+@media screen and (max-width: 500px) {
+  .todo-search-filter {
+    display: none;
+  }
+
+  .todo-generator {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 501px) {
+  .todo-search-filter-mobile {
+    display: none;
+  }
+
+  .todo-generator-mobile {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 300px) {
